@@ -2,11 +2,17 @@ name: Publish (Canary)
 
 on:
   workflow_dispatch:
+    inputs:
+      withCanaryDeploy:
+        description: Deploy Canary
+        default: false
+        type: boolean
       
 jobs:
   run-ci:
     uses: ./.github/workflows/ci.yml
   publish-canary:
+    if: inputs.withCanaryDeploy == false
     runs-on: ubuntu-latest
     needs:
       - run-ci
