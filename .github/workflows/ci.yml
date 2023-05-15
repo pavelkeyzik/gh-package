@@ -2,6 +2,10 @@ name: CI
 
 on:
   push:
+    branches:
+      - "main"
+      - "next"
+      - "version/**"
   pull_request:
     types:
       - opened
