@@ -6,7 +6,12 @@ on:
       withCanaryDeploy:
         description: Deploy Canary
         default: false
+        required: true
         type: boolean
+      prId:
+        description: PR id
+        required: true
+        type: string
       
 jobs:
   run-ci:
@@ -29,4 +34,5 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@pavelkeyzik'
       - run: npm ci
+      - run: echo "GitHub PR is ${{ inputs.prId }}"
       - run: echo "🚀 Ship Canary Release"
